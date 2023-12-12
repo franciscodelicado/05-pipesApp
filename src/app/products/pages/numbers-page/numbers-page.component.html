@@ -1,0 +1,23 @@
+<p-panel header="Pipes Numéricos" class="p-2">
+  <p>Pipes incluidos en Ángular - Usualmente en el Common Module</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="Ventas Netas" subheader="Presente Año">
+      {{ totalSells | number: '1.2-6' }}
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="Ventas Brutas" subheader="Presente Año">
+      {{ totalSells | currency: 'EUR': 'symbol' : '1.2' }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="Porcentaje Ganancias" subheader="Presente Año">
+      {{ percent | percent: '1.2-2' }}
+    </p-card>
+  </div>
+
+</div>

@@ -1,0 +1,40 @@
+<p-panel header="Pipes Personalizados" class="p-2">
+  <p>Pipes creados por {{'nosotros' | toggleCase: toUpper }}</p>
+  <p-toolbar>
+    <div class="p-toolbar-group-start">
+      @if(toUpper){
+        <p-button label="Minúsculas" icon="pi pi-angle-double-down" class="mr-2"
+                  (onClick)="changeToUpper()"></p-button>
+
+      }@else{
+        <p-button label="Mayúsculas" icon="pi pi-angle-double-up" styleClass="p-button-success"
+                (onClick)="changeToUpper()"></p-button>
+      }
+    </div>
+    <div class="p-toolbar-group-end">
+        <p-button label = "Por nombre" icon="pi pi-sort" class="mr-2"
+            (onClick)="changeSortKey('name')"></p-button>
+        <p-button label = "Por poder" icon="pi pi-sort" styleClass="p-button-success mr-2"
+            (onClick)="changeSortKey('power')"></p-button>
+        <p-button label = "Por color" icon="pi pi-sort" styleClass="p-button-danger"
+            (onClick)="changeSortKey('color')"></p-button>
+    </div>
+    <p-table [value]="heroes | sortbykey: sortkey" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Nombre</th>
+              <th>Poder</th>
+              <th>Color</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-hero>
+          <tr>
+              <td>{{ hero.name | toggleCase: toUpper}}</td>
+              <td>{{ hero.power | toggleCase: toUpper}}</td>
+              <td>{{ hero.color | toggleCase: toUpper}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</p-toolbar>
+</p-panel>
+
